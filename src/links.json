@@ -1,11 +1,19 @@
 {
-  "fallback": "https://search.bilibili.com/all?keyword=%E5%A5%B6%E9%BE%99",
+  "fallback": "https://www.nailoong.com/",
   "links": [
+    "https://www.nailoong.com/",
+    "https://weibo.com/p/1005057724637968/home",
+    "https://www.douyin.com/search/%E6%8A%96%E9%9F%B3%E5%A5%B6%E9%BE%99%E5%AE%98%E6%96%B9",
+    "https://www.bilibili.com/video/BV1eMiRBAE3h/",
+    "https://cnmeme.wiki/entry/%E5%A5%B6%E9%BE%99%E5%A4%A7%E7%AC%91",
+    "https://baike.baidu.com/item/%E5%A5%B6%E9%BE%99%E5%A4%A7%E7%AC%91/67478055",
+    "https://zh.wikipedia.org/wiki/%E5%A5%B6%E9%BE%99",
+    "https://zhuanlan.zhihu.com/p/2058127122644968775",
+    "https://news.qq.com/rain/a/20260115A02SPQ00",
+    "https://search.bilibili.com/all?keyword=%E5%A5%B6%E9%BE%99%E5%A4%A7%E7%AC%91",
+    "https://search.bilibili.com/all?keyword=%E5%A5%B6%E8%9B%99",
+    "https://www.douyin.com/search/%E5%A5%B6%E9%BE%99%E6%8A%BD%E8%B1%A1%E6%A2%97%E5%90%88%E9%9B%86",
     "https://search.bilibili.com/all?keyword=%E5%A5%B6%E9%BE%99",
-    "https://search.bilibili.com/all?keyword=%E5%A5%B6%E9%BE%99%E8%9B%8B%E7%9C%9F",
-    "https://live.bilibili.com/search?keyword=%E5%A5%B6%E9%BE%99",
-    "https://so.douyin.com/search/%E5%A5%B6%E9%BE%99",
-    "https://www.xiaohongshu.com/search_result?keyword=%E5%A5%B6%E9%BE%99",
-    "https://www.bing.com/search?q=%E5%A5%B6%E9%BE%99"
+    "https://so.douyin.com/search/%E5%A5%B6%E9%BE%99"
   ]
 }
