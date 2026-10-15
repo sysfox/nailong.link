@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Baloo 2", "Comic Sans MS", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #3e2723;
+  background: linear-gradient(160deg, #fff8e1 0%, #ffecb3 100%);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #3e2723;
+  text-shadow: 2px 2px 0 #ffd54f, 4px 4px 0 rgba(255, 193, 7, 0.4);
+  letter-spacing: 0.04em;
+  animation: float-bounce 2.4s ease-in-out infinite;
+}
+
+.slogan {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #6d4c41;
+  opacity: 0.9;
+}
+
+.countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 48px;
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 28px;
+  box-shadow: 0 8px 32px rgba(255, 193, 7, 0.25);
+  backdrop-filter: blur(4px);
+}
+
+.countdown-number {
+  font-size: 6rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #ffc107;
+  text-shadow: 2px 2px 0 #3e2723;
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-bar {
+  width: min(360px, 70vw);
+  height: 18px;
+  border-radius: 999px;
+  background: #fff3d6;
+  box-shadow: inset 0 2px 6px rgba(62, 39, 35, 0.12);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffd54f, #ffc107, #ffb300);
+  box-shadow: 0 0 8px rgba(255, 193, 7, 0.8);
+  transition: width 1s linear;
+}
+
+.footer {
+  font-size: 0.875rem;
+  color: #8d6e63;
+}
+
+.is-imminent {
+  animation: urgent-pulse 0.6s ease-in-out infinite;
+}
+
+@keyframes float-bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-10px) scale(1.02) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(0) scale(1);
+  }
+  75% {
+    transform: translateY(-6px) scale(1.01) rotate(1.5deg);
+  }
+}
+
+@keyframes urgent-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 8px 32px rgba(255, 193, 7, 0.25);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 12px 48px rgba(255, 171, 64, 0.55);
+  }
+}
+
+@media (max-width: 600px) {
+  .app {
+    gap: 18px;
+    padding: 28px 16px;
+  }
+
+  .logo {
+    font-size: 2.25rem;
+  }
+
+  .slogan {
+    font-size: 1rem;
+  }
+
+  .countdown {
+    padding: 24px 28px;
+    gap: 12px;
+  }
+
+  .countdown-number {
+    font-size: 4rem;
+  }
+
+  .progress-bar {
+    width: min(280px, 78vw);
+  }
+
+  .footer {
+    font-size: 0.75rem;
+  }
+}

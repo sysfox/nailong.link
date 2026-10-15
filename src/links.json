@@ -1,0 +1,11 @@
+{
+  "fallback": "https://search.bilibili.com/all?keyword=%E5%A5%B6%E9%BE%99",
+  "links": [
+    "https://search.bilibili.com/all?keyword=%E5%A5%B6%E9%BE%99",
+    "https://search.bilibili.com/all?keyword=%E5%A5%B6%E9%BE%99%E8%9B%8B%E7%9C%9F",
+    "https://live.bilibili.com/search?keyword=%E5%A5%B6%E9%BE%99",
+    "https://so.douyin.com/search/%E5%A5%B6%E9%BE%99",
+    "https://www.xiaohongshu.com/search_result?keyword=%E5%A5%B6%E9%BE%99",
+    "https://www.bing.com/search?q=%E5%A5%B6%E9%BE%99"
+  ]
+}
