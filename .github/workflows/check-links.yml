@@ -1,0 +1,77 @@
+name: Link Check
+
+on:
+  schedule:
+    # GitHub Action 的 cron 以 UTC 计，16:00 UTC = 北京时间每天 0:00
+    - cron: '0 16 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: link-check
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # 验活脚本是零依赖的，无需 npm ci，直接运行
+      - name: 检查链接是否存活
+        run: node scripts/check-links.mjs --src-dir src --out dead-links.json
+
+      - name: 判断并提交清理 PR
+        if: ${{ hashFiles('dead-links.json') != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          dead_count=$(jq length dead-links.json)
+          if [ "$dead_count" -eq 0 ]; then
+            echo "没有检测到挂掉的链接，跳过。"
+            exit 0
+          fi
+
+          date_tag=$(date +%Y%m%d)
+          branch="link-cleanup/$date_tag"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # 用 -B 复位同名分支，同日重跑时直接复用已开的 PR
+          git checkout -B "$branch"
+
+          # 先用死链明细生成 PR 描述（markdown 表格，包含挂掉原因）
+          body_file=$(mktemp)
+          {
+            echo "## 挂掉的链接"
+            echo ""
+            echo "| 分类文件 | 链接 | 原因 |"
+            echo "| --- | --- | --- |"
+            jq -r '.[] | "| \(.file) | \(.url) | \(.reason) |"' dead-links.json
+            echo ""
+            echo "由 CI 自动检测并生成，请人工确认后再合并。重复运行 ${{ github.run_id }} 对应的检查可以对链接进行二次验证。"
+          } > "$body_file"
+
+          node scripts/remove-dead-links.mjs --src-dir src --out dead-links.json
+          rm -f dead-links.json
+
+          if git diff --exit-code; then
+            echo "分支上没有变更，无需 PR。"
+            exit 0
+          fi
+
+          git add src
+          git commit -m "chore: remove dead links (auto-check $date_tag)"
+          git push -u --force-with-lease origin "$branch"
+
+          gh pr create \
+            --title "chore: 清理挂掉的链接 ($date_tag)" \
+            --body-file "$body_file" \
+            --head "$branch" \
+            --base main || echo "当日 PR 已存在，已通过 force push 更新."
