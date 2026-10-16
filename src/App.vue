@@ -2,7 +2,7 @@
 import { onMounted, onUnmounted } from 'vue'
 import categories, { DEFAULT_CATEGORY_ID } from './categories'
 
-const REDIRECT_DELAY = 3000
+const REDIRECT_DELAY = 5000
 
 function resolveCategory(loc) {
   let id = ''
