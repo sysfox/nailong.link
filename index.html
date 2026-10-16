@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>奶龙跳转中…</title>
-    <link rel="icon" type="image/png" href="/nailoong-icon.png" />
-    <meta name="description" content="奶龙三色同心圆加载，3 秒后自动跳转" />
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>奶龙跳转中…</title>
+  <link rel="icon" type="image/png" href="/nailoong-icon.png" />
+  <script>
+    window.op = window.op || function () { var n = []; return new Proxy(function () { arguments.length && n.push([].slice.call(arguments)) }, { get: function (t, r) { return "q" === r ? n : function () { n.push([r].concat([].slice.call(arguments))) } }, has: function (t, r) { return "q" === r } }) }();
+    window.op('init', {
+      apiUrl: 'https://op.trfox.top/api',
+      clientId: '94c822f9-8851-43de-828f-aa228c47a2eb',
+      trackScreenViews: true,
+      trackOutgoingLinks: true,
+      trackAttributes: true,
+      sessionReplay: {
+      enabled: true,
+      },
+    });
+  </script>
+  <script src="https://openpanel.dev/op1.js" defer async></script>
+  <meta name="description" content="奶龙三色同心圆加载，3 秒后自动跳转" />
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
