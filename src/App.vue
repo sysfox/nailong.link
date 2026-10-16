@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import categories, { DEFAULT_CATEGORY_ID } from './categories'
 
 const REDIRECT_DELAY = 5000
@@ -31,7 +31,7 @@ function pickRandomLink(categoryId) {
 }
 
 const categoryId = resolveCategory(window.location)
-const targetUrl = pickRandomLink(categoryId)
+const targetUrl = ref(pickRandomLink(categoryId))
 const categoryName = categories[categoryId].name
 
 function toDisplay(url) {
@@ -40,19 +40,22 @@ function toDisplay(url) {
   const host = url.match(/^https?:\/\/([^/?#]+)/i)
   return host ? host[1] : url
 }
-const displayUrl = toDisplay(targetUrl)
+const displayUrl = computed(() => toDisplay(targetUrl.value))
 
 let timer = null
 
 function startCountdown() {
   if (timer) clearTimeout(timer)
   timer = setTimeout(() => {
-    window.location.href = targetUrl
+    window.location.href = targetUrl.value
   }, REDIRECT_DELAY)
 }
 
 function handlePageShow(event) {
-  if (event.persisted) startCountdown()
+  if (event.persisted) {
+    targetUrl.value = pickRandomLink(categoryId)
+    startCountdown()
+  }
 }
 
 onMounted(() => {
