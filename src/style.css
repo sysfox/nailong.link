@@ -23,7 +23,29 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 20px;
   background: #ffcf2e;
+}
+
+.hint-category {
+  font-size: 16px;
+  font-weight: 700;
+  color: #161616;
+  letter-spacing: 0.08em;
+}
+
+.hint-category span {
+  color: #15924a;
+}
+
+.hint-url {
+  max-width: 76vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  color: rgba(22, 22, 22, 0.55);
 }
 
 .rings {

@@ -32,6 +32,16 @@ function pickRandomLink(categoryId) {
 
 const categoryId = resolveCategory(window.location)
 const targetUrl = pickRandomLink(categoryId)
+const categoryName = categories[categoryId].name
+
+function toDisplay(url) {
+  const video = url.match(/\/video\/(BV\w+)/i)
+  if (video) return video[1]
+  const host = url.match(/^https?:\/\/([^/?#]+)/i)
+  return host ? host[1] : url
+}
+const displayUrl = toDisplay(targetUrl)
+
 let timer = null
 
 onMounted(() => {
@@ -51,10 +61,12 @@ onUnmounted(() => {
 
 <template>
   <main class="stage">
-    <div class="rings" role="status" aria-label="正在召唤奶龙，马上跳转">
+    <div class="rings" role="status" :aria-label="`即将前往${categoryName}，马上跳转`">
       <div class="ring ring-outer"></div>
       <div class="ring ring-middle"></div>
       <div class="ring ring-inner"></div>
     </div>
+    <p class="hint-category">即将前往<span>「{{ categoryName }}」</span></p>
+    <p class="hint-url" :title="targetUrl">{{ displayUrl }}</p>
   </main>
 </template>
