@@ -1,12 +1,14 @@
 import memes from './links.json'
 import nailongUniversity from './nailongUniversity.json'
+import bilibili from './bilibili.json'
 
 export const DEFAULT_CATEGORY_ID = 'all'
 
 // 新增子列表时在这里注册即可：id -> { name, fallback, links }
 const categories = {
   memes,
-  'nailong-university': nailongUniversity
+  'nailong-university': nailongUniversity,
+  bilibili
 }
 
 // 根域默认从所有子列表合并的链接中随机跳转
