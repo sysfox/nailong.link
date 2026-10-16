@@ -19,13 +19,33 @@ body {
 }
 
 .stage {
-  min-height: 100vh;
+  min-height: calc(100vh - 44px);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 20px;
   background: #ffcf2e;
+}
+
+.footer {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #ffcf2e;
+}
+
+.footer a {
+  font-size: 13px;
+  color: rgba(22, 22, 22, 0.55);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #161616;
+  text-decoration: underline;
 }
 
 .hint-category {

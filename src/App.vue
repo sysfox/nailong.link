@@ -69,4 +69,12 @@ onUnmounted(() => {
     <p class="hint-category">即将前往<span>「{{ categoryName }}」</span></p>
     <p class="hint-url" :title="targetUrl">{{ displayUrl }}</p>
   </main>
+  <footer class="footer">
+    <a href="https://github.com/sysfox/nailong.link" target="_blank" rel="noopener">GitHub</a>
+    <a
+      href="https://ocn59mj1gt20.feishu.cn/share/base/form/shrcnRK52RYPfeMLJZxkHLeQg2g"
+      target="_blank"
+      rel="noopener">提交链接</a
+    >
+  </footer>
 </template>
