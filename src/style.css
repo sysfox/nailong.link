@@ -12,29 +12,38 @@ body {
 body {
   font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   background: #fff3c4;
+  overflow: hidden;
 }
 
 #app {
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
 }
 
 .stage {
-  min-height: calc(100vh - 44px);
+  flex: 1;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
+  gap: clamp(12px, 3vmin, 20px);
+  padding: 0 16px;
   background: #ffcf2e;
 }
 
 .footer {
+  flex-shrink: 0;
   min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: clamp(10px, 4vw, 16px);
+  padding: 0 12px;
   background: #ffcf2e;
+  white-space: nowrap;
 }
 
 .footer a {
@@ -113,6 +122,29 @@ body {
   50% {
     transform: translate(-50%, -50%) scale(1.06);
     opacity: 0.88;
+  }
+}
+
+@media (max-width: 380px) {
+  .stage {
+    gap: 12px;
+  }
+
+  .hint-category {
+    font-size: 14px;
+  }
+
+  .hint-url {
+    max-width: 84vw;
+    font-size: 12px;
+  }
+
+  .footer {
+    gap: 10px;
+  }
+
+  .footer a {
+    font-size: 12px;
   }
 }
 
