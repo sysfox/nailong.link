@@ -44,14 +44,25 @@ const displayUrl = toDisplay(targetUrl)
 
 let timer = null
 
-onMounted(() => {
-  document.title = `${categories[categoryId].name}跳转中…`
+function startCountdown() {
+  if (timer) clearTimeout(timer)
   timer = setTimeout(() => {
     window.location.href = targetUrl
   }, REDIRECT_DELAY)
+}
+
+function handlePageShow(event) {
+  if (event.persisted) startCountdown()
+}
+
+onMounted(() => {
+  document.title = `${categories[categoryId].name}跳转中…`
+  startCountdown()
+  window.addEventListener('pageshow', handlePageShow)
 })
 
 onUnmounted(() => {
+  window.removeEventListener('pageshow', handlePageShow)
   if (timer) {
     clearTimeout(timer)
     timer = null
