@@ -22,7 +22,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 26
 
       # 验活脚本是零依赖的，无需 npm ci，直接运行
       - name: 检查链接是否存活
